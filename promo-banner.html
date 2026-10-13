@@ -57,6 +57,7 @@ input[type=file]{font-size:12px;color:var(--muted);max-width:100%}
 .row{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
 .btn{padding:9px 14px;border-radius:9px;border:0;background:var(--btn);color:var(--btn-fg);font-weight:700;cursor:pointer}
 .btn.ghost{background:transparent;color:var(--fg);border:1px solid var(--line)}
+.btn.rand{margin-left:auto;display:inline-flex;align-items:center;gap:8px;background:#7c5cff;color:#ffffff}
 .muted{color:var(--muted);font-size:13px}
 
 .preview{min-width:0;display:flex;flex-direction:column;gap:14px}
@@ -215,7 +216,7 @@ input[type=file]{font-size:12px;color:var(--muted);max-width:100%}
           <button type="button" data-v="banner">Баннер</button>
           <button type="button" data-v="popup">Поп-ап на сайте</button>
         </div>
-        <button type="button" class="btn" data-action="random">Случайный дизайн</button>
+        <button type="button" class="btn rand" data-action="random"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-2.64-6.36"/><path d="M21 4v5h-5"/></svg>Случайный дизайн</button>
         <button type="button" class="btn ghost" id="restore" hidden>Показать поп-ап снова</button>
       </div>
       <div class="stage" id="stage"></div>
@@ -882,6 +883,8 @@ function randomDesign(){
   state.btnShape = pick(Object.keys(btnShapes));
   state.bgMode = 'vector';
   state.seed = ri(1, 999999);
+  state.titleFont = pick(Object.keys(FONTS));
+  state.bodyFont = pick(Object.keys(FONTS));
   state.closed = false;
 }
 
